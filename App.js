@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-gitbar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import MusicGenerator from './src/components/MusicGenerator'; // Import the MusicGenerator component
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <MusicGenerator />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,  // This allows SafeAreaView to fill the entire screen
+    backgroundColor: '#ffffff',  // Set a background color for the whole screen
+    paddingTop: 50,  // To avoid the status bar on iOS
   },
 });
