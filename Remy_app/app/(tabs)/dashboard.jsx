@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import { Link } from 'expo-router';
 
 export default function DashboardScreen() {
-  const username = 'username'; // Replace or fetch dynamically
+  const username = 'username'; // Replace with actual username or state
 
   return (
     <View style={styles.container}>
@@ -12,33 +12,44 @@ export default function DashboardScreen() {
         colors={['#6A608C', '#2E096D']}
         style={styles.gradient}
       >
-        {/* Greeting at the top */}
+        {/* Top-left "Remy" brand */}
+        <View style={styles.header}>
+          <Text style={styles.brandTitle}>Remy</Text>
+        </View>
+
+        {/* Greeting text below the brand */}
         <Text style={styles.greeting}>Good evening, {username}</Text>
 
         {/* Middle cards row */}
         <View style={styles.cardsContainer}>
+          
           {/* Sleep Analysis Card */}
-          <TouchableOpacity style={styles.card} onPress={() => {/* navigate or handle press */}}>
-            {/* Replace with your moon icon/image */}
+          <TouchableOpacity 
+            style={styles.card} 
+            onPress={() => {
+              // navigate or handle press
+            }}
+          >
             <Text style={styles.cardIcon}>🌙</Text>
             <Text style={styles.cardText}>Sleep Analysis</Text>
           </TouchableOpacity>
-
-          {/* Sleep Audio Card */}
-          <TouchableOpacity style={styles.card} onPress={() => {/* navigate or handle press */}}>
-          <Text style={styles.cardIcon}>🎵</Text>
-            <Text style={styles.cardText}>Sleep Audio</Text>
-          </TouchableOpacity>
+          
+          {/* Sleep Audio Card with Link */}
+          <Link href="/musicGenerator" asChild>
+            <TouchableOpacity style={styles.card}>
+              <Text style={styles.cardIcon}>🎵</Text>
+              <Text style={styles.cardText}>Sleep Audio</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
 
         {/* Bottom moon + Remy branding */}
         <View style={styles.bottomContainer}>
-          {/* Large moon image */}
           <Image 
             source={require('/Users/owenwilsontedja/Remy/Remy_app/moonpurp.png')} 
             style={styles.moonImage}
           />
-          <Text style={styles.brandText}>Remy</Text>
+          <Text style={styles.bottomBrandText}>Remy</Text>
         </View>
       </LinearGradient>
     </View>
@@ -55,24 +66,36 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: 30,
-    paddingTop: 80, // space from top
+    paddingTop: 50,
   },
-  /* Greeting text at the top */
+  /* Header: top-left Remy */
+  header: {
+    width: '100%',
+    alignItems: 'flex-start', // align "Remy" to the left
+    marginBottom: 10,
+  },
+  brandTitle: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 26,
+    color: '#fff',
+  },
+  /* Greeting text below it */
   greeting: {
-    fontFamily: 'Poppins-Regular', // Make sure Poppins is loaded
+    fontFamily: 'Poppins-Regular', 
     fontSize: 28,
     color: '#fff',
-    marginBottom: 40,
-    alignSelf: 'flex-start',
+    marginTop:250,
+    marginBottom: 30,
+    alignSelf: 'flex-start', // or 'center' if you want it centered
   },
   /* Row containing the two cards */
   cardsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    marginBottom: 40, // space between cards and bottom moon
+    marginBottom: 40,
   },
-  /* Individual card styling */
+  /* Shared card styling */
   card: {
     flex: 1,
     backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -82,10 +105,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  /* Example icon (emoji) in the card */
+  /* Icons (emoji) in the card */
   cardIcon: {
     fontSize: 36,
     marginBottom: 10,
+    color: '#fff',
   },
   /* Card text styling */
   cardText: {
@@ -99,17 +123,17 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    marginBottom: 20, // adjust as needed
+    marginBottom: 20,
   },
   /* Large moon image at the bottom */
   moonImage: {
     width: 700,
     height: 500,
     resizeMode: 'contain',
-    marginBottom: -120, // so the brand text can overlay
+    marginBottom: -120,
   },
   /* "Remy" text over the moon */
-  brandText: {
+  bottomBrandText: {
     fontFamily: 'Poppins-Regular',
     fontSize: 20,
     position: 'absolute',
