@@ -37,6 +37,8 @@ const FetchUsers = () => {
           <View key={index}>
             <Text>Name: {user.name}</Text>
             <Text>Email: {user.email}</Text>
+            <Text>Password: (userData.password)</Text>
+            <Text>Login: (userData.isLoggedIn)</Text>
             <Text>Timezone: {user.timezone}</Text>
             <Text>Recommended Sleep: {user.recommendedSleep}</Text>
             <Text>Preferred Bedtime: {user.preferredBedtime}</Text>
