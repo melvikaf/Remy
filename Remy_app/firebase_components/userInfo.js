@@ -19,6 +19,8 @@ const UserProfile = ({ userId }) => {
         <>
           <Text>Name: {userData.name}</Text>
           <Text>Email: {userData.email}</Text>
+          <Text>Password: (userData.password)</Text>
+          <Text>Login: (userData.isLoggedIn)</Text>
           <Text>Timezone: {userData.timezone}</Text>
           <Text>Recommended Sleep: {userData.recommendedSleep} hours</Text>
           <Text>Preferred Bedtime: {userData.preferredBedtime}</Text>
